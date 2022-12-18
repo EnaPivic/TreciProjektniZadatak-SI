@@ -30,7 +30,6 @@ window.onload = function () {
     document.getElementById('catagoryName').style.display = "block";
     document.getElementById('hold').style.display = "block";
     document.getElementById('mylives').style.display = "block";
-    document.getElementById('reset').style.display = "block";
 
     document.getElementById('myscore').style.display = "block";
     document.getElementById('again').style.display = "block";
@@ -123,6 +122,9 @@ document.getElementById('bg-l').onclick = function() {
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
       won=0;
+      document.getElementById('again').style.display = "none";
+      document.getElementById('reset').style.display = "block";
+
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
@@ -291,7 +293,12 @@ document.getElementById('bg-l').onclick = function() {
     correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
     context.clearRect(0, 0, 400, 400);
+    document.getElementById('again').style.display = "block";
+    document.getElementById('reset').style.display = "none";
+
     play();
+    comments();
+
 
 won=0;
 score();
@@ -302,6 +309,11 @@ score();
     letters.parentNode.removeChild(letters);
     context.clearRect(0, 0, 400, 400);
     play();
+    if(won>0){
+            won=won-1;
+    }
+    score(); 
+    comments();
   }
 }
 
